@@ -4,12 +4,12 @@ public class Smartphone extends Product{
 
     // ATTRIBUTES
 
-    private int imei;
+    private String imei;
     private String storage;
 
     // CONSTRUCTORS
 
-    public Smartphone(String name, String description, String price, String vat, int imei, String storage) {
+    public Smartphone(String name, String description, String price, String vat, String imei, String storage) {
         super(name, description, price, vat);
 
         this.imei = imei;
@@ -28,11 +28,26 @@ public class Smartphone extends Product{
         this.storage = storage;
     }
 
-    public int getImei() {
+    public String getImei() {
         return imei;
     }
 
-    public void setImei(int imei) {
+    public void setImei(String imei) {
         this.imei = imei;
+    }
+
+    // To String
+
+    @Override
+    public String toString() {
+        return "Smartphone{" +
+                "code=" + getCode() +
+                ", imei=" + imei +
+                ", storage='" + storage + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", vat=" + vat +
+                '}';
     }
 }

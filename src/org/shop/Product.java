@@ -85,4 +85,16 @@ public class Product {
                 "€, vat=" + vat +
                 '}';
     }
+
+    // Other methods
+    protected boolean setBoolean(String input) {
+        if(input.equals("y")){
+            return true;
+        } else if (input.equals("n")){
+            return false;
+        } else {
+            System.out.println("Invalid input. Defaulted to 'No'.");
+            return false;
+        }
+    }
 }
