@@ -1,15 +1,17 @@
 package org.shop;
 
+import java.math.BigDecimal;
+
 public class Smartphone extends Product{
 
     // ATTRIBUTES
 
     private String imei;
-    private String storage;
+    private int storage;
 
     // CONSTRUCTORS
 
-    public Smartphone(String name, String description, String price, String vat, String imei, String storage) {
+    public Smartphone(String name, String description, String price, String vat, String imei, int storage) {
         super(name, description, price, vat);
 
         this.imei = imei;
@@ -20,11 +22,11 @@ public class Smartphone extends Product{
 
     // Getters and Setters
 
-    public String getStorage() {
+    public int getStorage() {
         return storage;
     }
 
-    public void setStorage(String storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 
@@ -46,8 +48,18 @@ public class Smartphone extends Product{
                 ", storage='" + storage + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
+                ", base price=" + price +
                 ", vat=" + vat +
                 '}';
+    }
+
+    // Other methods
+
+    @Override
+    public BigDecimal getDiscountedPrice(){
+        if(storage < 32){
+            return getFullPrice().multiply(new BigDecimal("0.95"));
+        }
+        return getFullPrice().multiply(new BigDecimal("0.98"));
     }
 }

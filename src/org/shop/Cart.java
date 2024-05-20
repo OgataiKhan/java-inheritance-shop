@@ -1,5 +1,6 @@
 package org.shop;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Cart {
@@ -36,11 +37,11 @@ public class Cart {
             switch (productType) {
                 case "s":
                     String imei;
-                    String storage;
+                    int storage;
                     System.out.print("IMEI: ");
                     imei = scanner.nextLine();
-                    System.out.print("Storage: ");
-                    storage = scanner.nextLine();
+                    System.out.print("Storage (GB): ");
+                    storage = Integer.parseInt(scanner.nextLine());
                     cartContents[i] = new Smartphone(name, description, price, vat, imei, storage);
                     i++;
                     break;
@@ -71,12 +72,31 @@ public class Cart {
             }
         }
 
+        // Total price
+        BigDecimal totalPrice = new BigDecimal(0);
+        boolean hasCard = false;
+        String userCardInput;
+        System.out.print("Do you have a loyalty card? (y)/(n) ");
+        userCardInput = scanner.nextLine();
+        if (userCardInput.equals("y")){
+            hasCard = true;
+        }
+
         // Print cart
         System.out.println("****************");
         System.out.println("Here are the details you entered:");
         for (int j = 0; j < cartSize; j++) {
             System.out.println(cartContents[j]);
+            if (hasCard){
+                totalPrice = totalPrice.add(cartContents[j].getDiscountedPrice());
+            } else {
+                totalPrice = totalPrice.add(cartContents[j].getFullPrice());
+            }
         }
+
+        System.out.println("****************");
+        System.out.println("The total price of your products is: " + totalPrice);
+
 
         // Close Scanner
         scanner.close();

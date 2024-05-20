@@ -1,5 +1,7 @@
 package org.shop;
 
+import java.math.BigDecimal;
+
 public class Headphones extends Product{
 
     // ATTRIBUTES
@@ -46,8 +48,18 @@ public class Headphones extends Product{
                 ", wireless='" + wireless + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
+                ", base price=" + price +
                 ", vat=" + vat +
                 '}';
+    }
+
+    // Other methods
+
+    @Override
+    public BigDecimal getDiscountedPrice(){
+        if(!wireless){
+            return getFullPrice().multiply(new BigDecimal("0.93"));
+        }
+        return getFullPrice().multiply(new BigDecimal("0.98"));
     }
 }

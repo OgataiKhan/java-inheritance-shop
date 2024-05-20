@@ -1,5 +1,7 @@
 package org.shop;
 
+import java.math.BigDecimal;
+
 public class Tv extends Product{
 
     // ATTRIBUTES
@@ -46,8 +48,18 @@ public class Tv extends Product{
                 ", smart='" + smart + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
+                ", base price=" + price +
                 ", vat=" + vat +
                 '}';
+    }
+
+    // Other methods
+
+    @Override
+    public BigDecimal getDiscountedPrice(){
+        if(!smart){
+            return getFullPrice().multiply(new BigDecimal("0.9"));
+        }
+        return getFullPrice().multiply(new BigDecimal("0.98"));
     }
 }

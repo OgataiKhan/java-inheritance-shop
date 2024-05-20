@@ -81,12 +81,13 @@ public class Product {
                 "code=" + getCode() +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
+                ", base price=" + price +
                 "€, vat=" + vat +
                 '}';
     }
 
     // Other methods
+
     protected boolean setBoolean(String input) {
         if(input.equals("y")){
             return true;
@@ -96,5 +97,9 @@ public class Product {
             System.out.println("Invalid input. Defaulted to 'No'.");
             return false;
         }
+    }
+
+    public BigDecimal getDiscountedPrice(){
+        return getFullPrice().multiply(new BigDecimal("0.98"));
     }
 }
