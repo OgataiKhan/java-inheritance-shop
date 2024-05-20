@@ -9,15 +9,15 @@ public class Cart {
 
         // Generate empty cart
         int cartSize;
-        System.out.print("How many products would you like to add?");
+        System.out.print("How many products would you like to add? ");
         cartSize = Integer.parseInt(scanner.nextLine());
         Product[] cartContents = new Product[cartSize];
 
         // Add products
         String productType;
-        int i = 1;
+        int i = 0;
 
-        while (i <= cartSize) {
+        while (i < cartSize) {
             System.out.println("What kind of product are you adding?");
             System.out.println("Smartphone (s), TV (t), Headphones (h)");
             productType = scanner.nextLine();
@@ -69,6 +69,13 @@ public class Cart {
                     System.out.println("Invalid input! Please try again.");
 
             }
+        }
+
+        // Print cart
+        System.out.println("****************");
+        System.out.println("Here are the details you entered:");
+        for (int j = 0; j < cartSize; j++) {
+            System.out.println(cartContents[j]);
         }
 
         // Close Scanner
