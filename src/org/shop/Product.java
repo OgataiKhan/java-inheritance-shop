@@ -7,10 +7,10 @@ public class Product {
     // ATTRIBUTES
 
     private int code;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private BigDecimal vat;
+    protected String name;
+    protected String description;
+    protected BigDecimal price;
+    protected BigDecimal vat;
 
     static int counter;
 
@@ -29,6 +29,7 @@ public class Product {
     // METHODS
 
     // Getters and Setters
+
     public String getCode() {
         return String.format("%06d", code);
     }
@@ -57,7 +58,7 @@ public class Product {
         return price;
     }
 
-    public BigDecimal getVatPrice() {
+    public BigDecimal getFullPrice() {
         return price.multiply(vat).add(price);
     }
 
