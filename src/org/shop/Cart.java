@@ -1,6 +1,7 @@
 package org.shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Cart {
@@ -95,7 +96,7 @@ public class Cart {
         }
 
         System.out.println("****************");
-        System.out.println("The total price of your products is: " + totalPrice);
+        System.out.println("The total price of your products is: " + totalPrice.setScale(2, RoundingMode.HALF_UP) + "€");
 
 
         // Close Scanner
